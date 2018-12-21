@@ -10,5 +10,5 @@ A Django based online store management solution with appointment scheduling.
 * CRUD features with multi level access rules for all data entities.
 
 ## Contributors
-[Aman Jain](github.com/jainaman224)  
-[Nihal Chauhan](github.com/nihalC07)  
+[Jayant Waldia](github.com/jayantsudo24)  
+
