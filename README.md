@@ -1,5 +1,4 @@
 # Spa-Manager-site
-# Spamanager
 A Django based online store management solution with appointment scheduling.
 
 ## Features
@@ -11,4 +10,4 @@ A Django based online store management solution with appointment scheduling.
 
 ## Contributors
 [Jayant Waldia](github.com/jayantsudo24)  
-
+[Ajitesh Niketan] (github.com/niketanrock07)  
