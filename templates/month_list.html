@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-top">
+  <div class="col-md-9">
+        <div class="content-top-1">
+        <div class="col-md-12 top-content">
+          <h2 style="font-size:2em">Monthly Store Stats</h2>
+          <br/>
+          <p> Monthly Turn Over : {{tocontrib}}</p>
+          <p> Monthly Profitable Hours : {{whours}} </p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+
+    <div class="content-top-1">
+    <div class="col-md-12 top-content">
+
+      <h1 class="page-header">Appoitnments in Selected Month</h1>
+      <div>
+      <br/>
+        <table class="table table-striped">
+                    <thead><tr> <th>#</th> <th>Employee</th><th>Customer</th><th>Date</th><th>Profit</th></tr></thead><tbody>
+        {% for obj in object_list %}
+<tr><td>{{obj.id}}</td><td>{{obj.Employee.name}}</td><td>{{obj.customer.name}}</td><td>{{obj.schedule.date}}</td><td>{{obj.profit}}</td></tr>
+        {% endfor %} </tbody> </table>
+      </div>
+    </div>
+     <div class="clearfix"> </div>
+    </div></div>
+
+    <div class="col-md-3 content-top-2">
+      <!---start-chart---->
+      <!----->
+
+
+          <div class="content-top-1">
+          <div class="col-md-12 top-content">
+            <h2 style="font-size:1.3em">Duration Filter</h2>
+            <br/><p>{{x}}<br/></p>
+            <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+            <table>{{ form|crispy }}</table>
+            <input type='submit'class="btn btn-primary" value='Filter' />
+
+          </form>
+          </div>
+          <div class="clearfix"> </div>
+          </div>
+
+
+    </div>
+    <div class="clearfix"> </div>
+    </div>
+
+
+  </div>
+{% endblock %}

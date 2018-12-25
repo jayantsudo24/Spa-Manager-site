@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-top">
+  <div class="col-md-5 ">
+
+    <div class="content-top-1">
+    <div class="col-md-12 top-content">
+      <h2 style="font-size:2em">Employee Record</h2>
+      <br/>
+      <p>Name : {{emp.name}}</p>
+      <p>Contact : {{emp.contact}}</p>
+      <p>Email : {{emp.email}}</p>
+      <p>Address : {{emp.address}}</p>
+      <p>Status :
+        {% if emp.active %}
+        Presently Active
+        {% else %}
+        Inactive
+        {% endif %}
+      </p>
+    </div>
+     <div class="clearfix"> </div>
+    </div>
+
+    <div class="content-top-1">
+    <div class="col-md-12 top-content">
+      <h2 style="font-size:1.8em">Duration Filter</h2>
+      <br/><p>{{x}}</p>
+      <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+      <table>{{ filter|crispy }}</table>
+      <input type='submit'class="btn btn-primary" value='Filter' />
+
+    </form>
+    </div>
+     <div class="clearfix"> </div>
+    </div>
+
+
+
+  </div>
+  <div class="col-md-7 content-top-2">
+    <!---start-chart---->
+    <!----->
+
+
+        <div class="content-top-1">
+        <div class="col-md-12 top-content">
+          <h2 style="font-size:2em">Employee Stats</h2>
+          <br/>
+          <p> Monthly Contribution : {{tocontrib}}</p>
+          <p> Monthly Profitable Hours : {{whours}} </p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+
+    <div class="content-top-1">
+    <div class="col-md-12 top-content">
+      <h2 style="font-size:2em">Completed Appointments</h2>
+      <br/>
+      <table class="table" style="margin-top:10px">
+
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Date</th>
+                      <th>Profit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+      {% for obj in app %}
+
+
+                    <tr>
+                      <td>{{obj.customer.name}}</td>
+                      <td>{{ obj.schedule|date }}</td>
+                      <td>{{obj.profit }}</td>
+                    </tr>
+
+      {% endfor %}
+
+                    </tbody>
+                  </table>
+
+
+          <br/>
+
+    </div>
+
+     <div class="clearfix"> </div>
+    </div>
+
+</div>
+<div class="clearfix"> </div>
+</div>
+
+</div>
+{% endblock %}

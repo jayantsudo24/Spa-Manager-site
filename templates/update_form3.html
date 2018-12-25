@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="banner" style="margin-bottom:20px">
+<h1>Treatment</h1><br/>
+<div>
+
+  <a href=/appointment/{{store_id}}/ctreat> <button class="btn btn-primary">Make New Treatment</button> </a>
+  <br/><br/>
+
+  <h1>{{ title }}</h1>
+  <form method='GET' action=''>
+
+
+  <input type='text' name='q' placeholder='Search Offer' class='form-control' value='{{ request.GET.q }}'/>
+  <input type='submit' class="btn btn-success" value='Search' style="margin-top:5px"/>
+  </form>
+  <table class="table table-striped" style="margin-top:30px">
+              <thead>
+                <tr>
+                  <th>Treatment</th>
+                  <th>Selling Price</th>
+                  <th>Description</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+  {% for obj in object_list %}
+
+                <tr>
+                  <td><a href="/appointment/{{store_id}}/utreat/{{obj.id}}">{{ obj.name }}</a></td>
+                  <td>{{ obj.selling_price }}</td>
+                  <td>
+                    {{ obj.description }}
+                  </td>
+                  <td>{{ obj.duration }}</td>
+                  <td><a href="/appointment/{{store_id}}/deltreat/{{obj.id}}">Delete</a></td>
+                </tr>
+
+  {% endfor %}
+
+                </tbody>
+              </table>
+
+
+  <div class="pagination">
+      <span class="step-links">
+          {% if object_list.has_previous %}
+              <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+          {% endif %}
+
+          <span class="current">
+              Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+          </span>
+
+          {% if object_list.has_next %}
+              <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+          {% endif %}
+      </span>
+  </div>
+
+</div>
+</div>
+{% endblock %}
