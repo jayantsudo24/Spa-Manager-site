@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+    <!-- Load jQuery JS -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- Load jQuery UI Main JS  -->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script>  <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+    $(document).ready(
+
+  /* This is the function that will get executed after the DOM is fully loaded */
+  function () {
+    $( "#datepicker" ).datepicker({
+      minDate: 0,
+      changeMonth: true,//this option for allowing user to select month
+      changeYear: true //this option for allowing user to select from year range
+    });
+  }
+
+
+);
+
+</script>
+
+<div class="banner" style="margin-bottom:20px">
+<h1>{{from_name}}</h1>
+<br/>
+<h1>{{ msg }}</h1>
+
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+<table>{{ form1|crispy }}</table>
+<button  class="btn btn-primary" id='setTimeButton'>Set current Time</button>
+
+<input type='submit' class="btn btn-primary" value='Filter Employees' />
+</form>
+</div>
+{% endblock %}

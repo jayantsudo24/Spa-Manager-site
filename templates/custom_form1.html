@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="banner" style="margin-bottom:20px">
+<h1>{{from_name}}</h1>
+
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+<table>{{ form2|crispy }}</table>
+<input type='submit'class="btn btn-primary" value='Create {{form_name}}' />
+
+</form>
+
+<div style="margin-top:50px">
+  <ul class="list-group">
+
+
+<h4>CURRENT OFFERS : </h4>
+{% for each in offers %}
+<li class="list-group-item">{{ each.name }} - {{ each.offer }}% </li>
+  <!-- {% for p in each.treatment.all %}
+        {{ p }}
+    {% endfor %} -->
+
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="page-header">{{title}} List</h1>
+
+  <div style="margin-top:20px">
+    <ul class="list-group">
+
+  {% for obj in Store_list %}
+
+
+    <a href="{{ obj.get_absolute_url }}" style="text-decoration:none">
+      <li class="list-group-item">
+    {{ obj.name }} <br/>
+    {{ obj.address }} <br/>
+    {{ obj.contact }}
+  </li> </a>
+    <!-- {% for p in each.treatment.all %}
+          {{ p }}
+      {% endfor %} -->
+
+  {% endfor %}
+  </ul>
+  </div>
+
+
+
+
+{% endblock %}

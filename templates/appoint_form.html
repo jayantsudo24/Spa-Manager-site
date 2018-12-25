@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="banner" style="margin-bottom:20px">
+<h1 class="page-header">Form</h1>
+
+{% if not appoint_details %}
+         <form action="" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+             <table> {{ appoint_form|crispy }} </table>
+             <input type="submit" class="btn btn-primary" value="insert">
+         </form>
+     {% endif %}
+</form>
+</div>
+{% endblock %}

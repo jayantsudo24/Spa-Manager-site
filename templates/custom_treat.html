@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="banner" style="margin-bottom:20px">
+<h1>{{from_name}}</h1>
+
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+{{ form2|crispy }}
+<input type='submit' class="btn btn-primary" value='Submit' />
+</form>
+</div>
+{% endblock %}

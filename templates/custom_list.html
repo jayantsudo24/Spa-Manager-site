@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="banner" style="margin-bottom:20px">
+
+  <a href="/appointment/{{store_id}}/ccreate/"> <button class="btn btn-primary">Make new Customer</button> </a>
+  <br/><br/>
+
+  <h1>{{ title }}</h1>
+  <form method='GET' action=''>
+  <input type='text' name='q' placeholder='Search Customers' class='form-control' value='{{ request.GET.q }}'/>
+  <input type='submit' class="btn btn-success" value='Search' style="margin-top:5px"/>
+  </form>
+  <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+  {% for obj in object_list %}
+
+
+
+                <tr>
+                  <td>{{obj.id}}</td>
+                  <td><a href="/appointment/{{store_id}}/create/{{obj.id}}/">{{obj.name}}</a></td>
+                  <td>{{obj.email}}</td>
+                  <td>{{obj.contact}}</td>
+                </tr>
+
+
+
+
+
+
+  {% endfor %}
+
+                </tbody>
+              </table>
+
+  <div class="pagination">
+      <span class="step-links">
+          {% if object_list.has_previous %}
+              <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+          {% endif %}
+
+          <span class="current">
+              Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+          </span>
+
+          {% if object_list.has_next %}
+              <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+          {% endif %}
+      </span>
+  </div>
+
+</div>
+{% endblock %}
