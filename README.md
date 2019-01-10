@@ -8,5 +8,5 @@ A Django based online store management solution with appointment scheduling.
 * Login based store id system to connect all stores across the city.
 * CRUD features with multi level access rules for all data entities.
 
-## Contributors
+## Contributor
 [Jayant Waldia](github.com/jayantsudo24)  
